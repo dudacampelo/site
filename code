@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mundo da Moda</title>
+  <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/892/892458.png" type="image/x-icon"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff8f0;
+      color: #333;
+    }
+    header, footer {
+      background-color: #ffe4e1;
+      text-align: center;
+      padding: 20px;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #c71585;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 30px;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    form {
+      background-color: #fff0f5;
+      padding: 20px;
+      max-width: 400px;
+      border-radius: 8px;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #c71585;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #a0136d;
+    }
+    #mensagem {
+      color: green;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌟 Mundo da Moda</h1>
+    <nav>
+      <a href="#tendencias">Tendências</a>
+      <a href="#estilos">Estilos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="tendencias">
+      <h2>Tendências 2025</h2>
+      <p>A moda está sempre se reinventando. Confira as tendências que estão dominando 2025:</p>
+      <ul>
+        <li>Looks sustentáveis e ecológicos</li>
+        <li>Cores metálicas e vibrantes</li>
+        <li>Estilo vintage repaginado</li>
+        <li>Conjuntos monocromáticos</li>
+      </ul>
+    </section>
+
+    <section id="estilos">
+      <h2>Estilos em Alta</h2>
+      <p>Do casual ao sofisticado, a moda oferece inúmeras possibilidades de se expressar:</p>
+      <p>Entre os estilos mais populares estão o <strong>comfy chic</strong>, o <strong>minimalista</strong> e o <strong>boho moderno</strong>.</p>
+    </section>
+
+    <section id="contato">
+      <h2>Assine Nossa Newsletter</h2>
+      <p>Receba novidades, dicas de estilo e promoções exclusivas no seu e-mail:</p>
+      <form id="formulario">
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="email">E-mail:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <button type="submit">Assinar</button>
+        <p id="mensagem"></p>
+      </form>
+    </section>
+
+    <section>
+      <h2>Experimente uma nova cor de fundo!</h2>
+      <button id="btnCor">Mudar Cor de Fundo</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mundo da Moda. Todos os direitos reservados.</p>
+    <p>
+      Nos siga nas redes:
+      <a href="#">Instagram</a> |
+      <a href="#">TikTok</a> |
+      <a href="#">Pinterest</a>
+    </p>
+  </footer>
+
+  <script>
+    // Array para armazenar assinantes
+    let assinantes = JSON.parse(localStorage.getItem('assinantes')) || [];
+
+    // Captura de elementos
+    const formulario = document.getElementById('formulario');
+    const nomeInput = document.getElementById('nome');
+    const emailInput = document.getElementById('email');
+    const mensagem = document.getElementById('mensagem');
+    const botaoCor = document.querySelector('#btnCor');
+
+    // Evento do formulário
+    formulario.addEventListener('submit', function(event) {
+      event.preventDefault(); // evita o recarregamento da página
+
+      const nome = nomeInput.value;
+      const email = emailInput.value;
+
+      // Armazena no array
+      assinantes.push({ nome, email });
+
+      // Atualiza o localStorage
+      localStorage.setItem('assinantes', JSON.stringify(assinantes));
+
+      // Mensagem de sucesso
+      mensagem.textContent = "Inscrição realizada com sucesso!";
+      formulario.reset(); // limpa os campos
+    });
+
+    // Evento para mudar cor do fundo
+    botaoCor.addEventListener('click', function() {
+      document.body.style.backgroundColor = "#e0ffff"; // cor diferente
+    });
+  </script>
+
+</body>
+</html>
